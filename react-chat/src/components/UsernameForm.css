@@ -1,0 +1,8 @@
+.input-container h2 {
+  justify-self: center;
+  margin-bottom: 0.25rem;
+}
+
+.input-container input {
+  margin-bottom: 2rem;
+}
