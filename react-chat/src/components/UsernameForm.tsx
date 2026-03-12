@@ -3,6 +3,7 @@ import { useChatStore } from '../store/useChatStore';
 import './UsernameForm.css';
 
 export function UsernameForm() {
+  const username = useChatStore((s) => s.username);
   const setUsername = useChatStore((s) => s.setUsername);
   const [input, setInput] = useState('');
 
@@ -18,8 +19,9 @@ export function UsernameForm() {
   };
 
   return (
-    <div className='input-container'>
-      <h2>Change Username</h2>
+    <div className='form-container input-container'>
+      <h3>Username: { username || 'unnamed' }</h3>
+      <p>Change Username</p>
       <input
         type="text"
         value={input}

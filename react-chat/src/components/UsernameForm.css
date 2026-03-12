@@ -1,4 +1,15 @@
-.input-container h2 {
+.form-container {
+  position: fixed;
+  top: 0;
+  left: 1%;
+}
+
+.input-container p {
+  justify-self: center;
+  margin-bottom: 0.25rem;
+}
+
+.input-container h3 {
   justify-self: center;
   margin-bottom: 0.25rem;
 }

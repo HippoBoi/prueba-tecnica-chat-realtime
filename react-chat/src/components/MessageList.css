@@ -5,6 +5,9 @@
 }
 
 .message-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   max-width: 480px;
   width: 100%;
   word-break: break-word;

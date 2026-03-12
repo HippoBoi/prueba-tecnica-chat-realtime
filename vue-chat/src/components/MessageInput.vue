@@ -8,7 +8,7 @@ const text = ref('');
 
 function handleSend() {
   const trimmed = text.value.trim();
-  const sender = chatStore.username || 'noname';
+  const sender = chatStore.username || 'unnamed';
   if (!trimmed || !chatStore.isConnected) return;
 
   const message = {
@@ -16,6 +16,7 @@ function handleSend() {
     text: trimmed,
     sender,
     timestamp: Date.now(),
+    profilePictureIndex: chatStore.profilePictureIndex,
   };
 
   socket.emit('message', message);
