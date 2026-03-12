@@ -1,8 +1,35 @@
+# Correr el proyecto
+
+1. **React Chat** (puerto 8000):
+
+   ```bash
+   cd react-chat
+   npm install
+   npm run dev
+   ```
+
+2. **Vue Chat** (puerto 8001):
+
+   ```bash
+   cd vue-chat
+   npm install
+   npm run dev
+   ```
+
+3. **Backend** (es el mismo de las instrucciones):
+
+   ```bash
+   cd backend
+   npm install
+   npm run dev
+   ```
+
+
 # Chat realtime con Socket.io
 
 Prueba técnica Finmarkets: crear un chat con realtime utilizando Socket.io.
 
-## React Chat
+### React Chat
 
 El chat con React se conecta con el backend Socket.io utilizando un hook (useSocket) y escucha eventos connect, disconnect y message.
 
@@ -38,29 +65,3 @@ interface Message {
   profilePictureIndex: number;
 }
 ```
-
-### Correr el proyecto
-
-1. **React Chat** (puerto 8000):
-
-   ```bash
-   cd react-chat
-   npm install
-   npm run dev
-   ```
-
-2. **Vue Chat** (puerto 8001):
-
-   ```bash
-   cd vue-chat
-   npm install
-   npm run dev
-   ```
-
-3. **Backend** (es el mismo de las instrucciones):
-
-   ```bash
-   cd backend
-   npm install
-   npm run dev
-   ```
