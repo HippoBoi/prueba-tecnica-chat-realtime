@@ -8,6 +8,7 @@ export const useChatStore = defineStore(
     const messages = ref<Message[]>([]);
     const isConnected = ref(false);
     const username = ref('');
+    const profilePictureIndex = ref(0);
 
     function addMessage(message: Message) {
       messages.value.push(message);
@@ -21,11 +22,15 @@ export const useChatStore = defineStore(
       username.value = name;
     }
 
-    return { messages, isConnected, username, addMessage, setConnected, setUsername };
+    function setProfilePictureIndex(index: number) {
+      profilePictureIndex.value = index;
+    }
+
+    return { messages, isConnected, username, profilePictureIndex, addMessage, setConnected, setUsername, setProfilePictureIndex };
   },
   {
     persist: {
-      pick: ['messages', 'username'],
+      pick: ['messages', 'username', 'profilePictureIndex'],
     },
   },
 );

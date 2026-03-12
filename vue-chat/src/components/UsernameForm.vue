@@ -22,7 +22,7 @@ onMounted(() => {
 
 <template>
   <div className="form-container">
-    <h3>Username: {{ username }}</h3>
+    <h3>Username: {{ username || 'unnamed' }}</h3>
     <p>Change Username</p>
     <input
       v-model="input"

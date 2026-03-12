@@ -3,6 +3,7 @@ import { useSocket } from './composables/useSocket';
 import ChatTitle from './components/ChatTitle.vue';
 import ConnectionStatus from './components/ConnectionStatus.vue';
 import UsernameForm from './components/UsernameForm.vue';
+import ProfilePicturePicker from './components/ProfilePicturePicker.vue';
 import MessageList from './components/MessageList.vue';
 import MessageInput from './components/MessageInput.vue';
 
@@ -14,6 +15,7 @@ useSocket();
     <ChatTitle />
     <ConnectionStatus />
     <UsernameForm />
+    <ProfilePicturePicker />
     <MessageList />
     <MessageInput />
   </div>
