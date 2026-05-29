@@ -57,8 +57,7 @@ input::placeholder {
 }
 
 input:focus {
-  border-color: #6477f2;
-  box-shadow: 0 0 0 4px rgba(100, 119, 242, 0.16);
+  border-color: #99b6f5;
 }
 
 input:disabled {
@@ -74,14 +73,11 @@ button {
   color: #ffffff;
   font-weight: 700;
   cursor: pointer;
-  background: linear-gradient(135deg, #5568ee, #7c58d9);
-  box-shadow: 0 12px 24px rgba(86, 100, 224, 0.24);
-  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+  background:  #668aec;
 }
 
 button:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 16px 28px rgba(86, 100, 224, 0.28);
   filter: brightness(1.04);
 }
 
