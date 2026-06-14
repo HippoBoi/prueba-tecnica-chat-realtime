@@ -9,6 +9,14 @@
   scrollbar-color: #b7c2d8 transparent;
 }
 
+.connection-message {
+  margin: auto;
+  color: #64708a;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+}
+
 .message-item {
   display: flex;
   align-items: center;

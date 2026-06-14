@@ -13,21 +13,19 @@ function App() {
   useSocket();
   const isChatVisible = useChatStore((s) => s.isChatVisible);
 
-  if (!isChatVisible) {
-    return (
-      <div className="app-container">
-        <p>Connecting to server...</p>
-      </div>
-    );
-  }
-
   return (
     <div className="app-container">
       <Title />
       <ConnectionStatus />
       <UsernameForm />
       <ProfilePicturePicker />
-      <MessageList />
+      {isChatVisible ? (
+        <MessageList />
+      ) : (
+        <div className="message-list">
+          <p className="connection-message">Connecting to server...</p>
+        </div>
+      )}
       <MessageInput />
     </div>
   );
