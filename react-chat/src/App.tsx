@@ -4,12 +4,14 @@ import { MessageList } from './components/MessageList';
 import { MessageInput } from './components/MessageInput';
 import { UsernameForm } from './components/UsernameForm';
 import { ProfilePicturePicker } from './components/ProfilePicturePicker';
+import { useChatStore } from './store/useChatStore';
 
 import './App.css';
 import { Title } from './components/Title';
 
 function App() {
   useSocket();
+  const isChatVisible = useChatStore((s) => s.isChatVisible);
 
   return (
     <div className="app-container">
@@ -17,7 +19,13 @@ function App() {
       <ConnectionStatus />
       <UsernameForm />
       <ProfilePicturePicker />
-      <MessageList />
+      {isChatVisible ? (
+        <MessageList />
+      ) : (
+        <div className="message-list">
+          <p className="connection-message">Connecting to server...</p>
+        </div>
+      )}
       <MessageInput />
     </div>
   );

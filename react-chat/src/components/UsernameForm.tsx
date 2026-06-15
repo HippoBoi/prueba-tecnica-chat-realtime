@@ -21,7 +21,6 @@ export function UsernameForm() {
   return (
     <div className='form-container input-container'>
       <h3>Username: { username || 'unnamed' }</h3>
-      <p>Change Username</p>
       <input
         type="text"
         value={input}
