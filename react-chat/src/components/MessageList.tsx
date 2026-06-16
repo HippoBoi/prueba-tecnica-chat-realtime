@@ -21,7 +21,7 @@ export function MessageList() {
     };
 
     fetchMessages();
-  }, []);
+  }, [setMessages]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -36,7 +36,10 @@ export function MessageList() {
             src={PROFILE_PICTURES[msg.profilePictureIndex ?? 0]}
             alt="profile"
           />
-          <strong>{msg.sender}</strong>: {msg.text}
+          <div className="message-content">
+            <span className="message-sender">{msg.sender}</span>
+            <p className="message-text">{msg.text}</p>
+          </div>
         </div>
       ))}
       <div ref={bottomRef} />
