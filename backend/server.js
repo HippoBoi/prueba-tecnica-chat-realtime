@@ -10,6 +10,7 @@ loadEnvFile();
 
 const port = process.env.PORT || 3001;
 const clientUrl = process.env.CLIENT_URL || "*";
+const allowedClientOrigins = parseAllowedOrigins(clientUrl);
 const defaultConversationId = process.env.DEFAULT_CONVERSATION_ID || "public";
 const messageHistoryLimit = Number(process.env.MESSAGE_HISTORY_LIMIT || 100);
 const databaseUrl = process.env.DATABASE_URL;
@@ -75,7 +76,9 @@ const server = http.createServer(async (req, res) => {
 });
 
 const io = new Server(server, {
-    cors: { origin: clientUrl },
+    cors: {
+        origin: allowedClientOrigins === "*" ? "*" : allowedClientOrigins,
+    },
 });
 
 io.on("connection", (socket) => {
@@ -277,6 +280,21 @@ function loadEnvFile() {
     }
 }
 
+function parseAllowedOrigins(value) {
+    if (!value || value === "*") {
+        return "*";
+    }
+
+    return value
+        .split(",")
+        .map((origin) => normalizeOrigin(origin))
+        .filter(Boolean);
+}
+
+function normalizeOrigin(origin) {
+    return String(origin || "").trim().replace(/\/$/, "");
+}
+
 function conversationRoom(conversationId) {
     return `conversation:${conversationId}`;
 }
@@ -287,11 +305,12 @@ function sendJson(res, statusCode, payload) {
 }
 
 function setCorsHeaders(req, res) {
-    const requestOrigin = req.headers.origin;
-    const allowedOrigin = clientUrl === "*" ? "*" : clientUrl;
+    const requestOrigin = normalizeOrigin(req.headers.origin);
 
-    if (clientUrl === "*" || requestOrigin === clientUrl) {
-        res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+    if (allowedClientOrigins === "*") {
+        res.setHeader("Access-Control-Allow-Origin", "*");
+    } else if (allowedClientOrigins.includes(requestOrigin)) {
+        res.setHeader("Access-Control-Allow-Origin", requestOrigin);
     }
 
     res.setHeader("Vary", "Origin");
