@@ -19,8 +19,10 @@ export function ProfilePicturePicker() {
   const [isUploading, setIsUploading] = useState(false);
   const profilePictureIndex = useChatStore((s) => s.profilePictureIndex);
   const profilePictureUrl = useChatStore((s) => s.profilePictureUrl);
+  const uploadedProfilePictureUrl = useChatStore((s) => s.uploadedProfilePictureUrl);
   const setProfilePictureIndex = useChatStore((s) => s.setProfilePictureIndex);
   const setProfilePictureUrl = useChatStore((s) => s.setProfilePictureUrl);
+  const selectUploadedProfilePicture = useChatStore((s) => s.selectUploadedProfilePicture);
 
   const handleProfilePictureSelect = (index: number) => {
     setUploadError('');
@@ -29,6 +31,11 @@ export function ProfilePicturePicker() {
 
   const handleUploadClick = () => {
     fileInputRef.current?.click();
+  };
+
+  const handleUploadedProfilePictureSelect = () => {
+    setUploadError('');
+    selectUploadedProfilePicture();
   };
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,21 +103,28 @@ export function ProfilePicturePicker() {
               <img src={pic} alt={`Profile ${index}`} />
             </button>
           ))}
+          {uploadedProfilePictureUrl ? (
+            <button
+              type="button"
+              className={`profile-picker-option profile-picker-custom${
+                profilePictureUrl ? ' selected' : ''
+              }`}
+              onClick={handleUploadedProfilePictureSelect}
+              aria-label="Select uploaded profile picture"
+              title="Select uploaded profile picture"
+            >
+              <img src={uploadedProfilePictureUrl} alt="Uploaded profile" />
+            </button>
+          ) : null}
           <button
             type="button"
-            className={`profile-picker-option profile-picker-upload${
-              profilePictureUrl ? ' selected' : ''
-            }`}
+            className="profile-picker-option profile-picker-upload"
             onClick={handleUploadClick}
             disabled={isUploading}
             aria-label="Upload profile picture"
             title="Upload profile picture"
           >
-            {profilePictureUrl ? (
-              <img src={profilePictureUrl} alt="Uploaded profile" />
-            ) : (
-              <span aria-hidden="true">+</span>
-            )}
+            <span aria-hidden="true">+</span>
           </button>
           <input
             ref={fileInputRef}
