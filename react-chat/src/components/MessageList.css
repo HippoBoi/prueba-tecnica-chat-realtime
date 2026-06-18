@@ -19,7 +19,7 @@
 
 .message-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.6rem;
   max-width: 100%;
   width: 100%;
@@ -33,6 +33,22 @@
   overflow-wrap: break-word;
 }
 
-.message-item strong {
+.message-content {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.message-sender {
   color: #172033;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.message-text {
+  margin: 0;
+  line-height: 1.4;
 }

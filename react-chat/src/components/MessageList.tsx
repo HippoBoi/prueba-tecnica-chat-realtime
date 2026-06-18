@@ -9,6 +9,14 @@ interface MessagesResponse {
   messages: Message[];
 }
 
+function getProfilePictureSrc(message: Message) {
+  if (message.profilePictureUrl) {
+    return message.profilePictureUrl;
+  }
+
+  return PROFILE_PICTURES[message.profilePictureIndex] ?? PROFILE_PICTURES[0];
+}
+
 export function MessageList() {
   const messages = useChatStore((s) => s.messages);
   const setMessages = useChatStore((s) => s.setMessages);
@@ -21,7 +29,7 @@ export function MessageList() {
     };
 
     fetchMessages();
-  }, []);
+  }, [setMessages]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -33,10 +41,13 @@ export function MessageList() {
         <div key={msg.id} className="message-item">
           <img
             className="message-profile-pic"
-            src={PROFILE_PICTURES[msg.profilePictureIndex ?? 0]}
+            src={getProfilePictureSrc(msg)}
             alt="profile"
           />
-          <strong>{msg.sender}</strong>: {msg.text}
+          <div className="message-content">
+            <span className="message-sender">{msg.sender}</span>
+            <p className="message-text">{msg.text}</p>
+          </div>
         </div>
       ))}
       <div ref={bottomRef} />
