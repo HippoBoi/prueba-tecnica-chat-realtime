@@ -124,6 +124,12 @@ function getProfilePictureSrc(message: Message) {
 }
 
 const USER_ID_BADGE_COLOR_COUNT = 6;
+const MESSAGE_TIME_FORMATTER = new Intl.DateTimeFormat('en-US', {
+  hour: 'numeric',
+  minute: '2-digit',
+  hour12: true,
+  timeZone: 'Etc/GMT+4',
+});
 
 function UserIdBadge({ userId }: { userId?: string | null }) {
   if (!userId) {
@@ -145,6 +151,24 @@ function UserIdBadge({ userId }: { userId?: string | null }) {
     >
       {label}
     </span>
+  );
+}
+
+function MessageTimestamp({ timestamp }: { timestamp: number }) {
+  const sentAt = new Date(timestamp);
+
+  if (Number.isNaN(sentAt.getTime())) {
+    return null;
+  }
+
+  return (
+    <time
+      className="message-timestamp"
+      dateTime={sentAt.toISOString()}
+      aria-label={`Sent at ${MESSAGE_TIME_FORMATTER.format(sentAt)}`}
+    >
+      {MESSAGE_TIME_FORMATTER.format(sentAt)}
+    </time>
   );
 }
 
@@ -178,7 +202,10 @@ export function MessageList({ onYouTubeVideoSelect }: MessageListProps) {
           <div className="message-content">
             <div className="message-header">
               <span className="message-sender">{msg.sender}</span>
-              <UserIdBadge userId={msg.userId} />
+              <span className="message-metadata">
+                <UserIdBadge userId={msg.userId} />
+                <MessageTimestamp timestamp={msg.timestamp} />
+              </span>
             </div>
             <MessageText text={msg.text} onYouTubeVideoSelect={onYouTubeVideoSelect} />
           </div>
