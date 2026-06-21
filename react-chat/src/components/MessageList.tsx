@@ -128,6 +128,7 @@ const MESSAGE_TIME_FORMATTER = new Intl.DateTimeFormat('en-US', {
   hour: 'numeric',
   minute: '2-digit',
   hour12: true,
+  timeZone: 'Etc/GMT+4',
 });
 
 function UserIdBadge({ userId }: { userId?: string | null }) {
