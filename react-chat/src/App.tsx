@@ -96,8 +96,6 @@ function App() {
 
       {isVideoUnlocked ? (
         <aside className="video-panel" aria-label="Subway Surfers video">
-
-        
             <iframe
             className="video-player"
             src={`https://www.youtube-nocookie.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&playsinline=1&rel=0`}
@@ -106,8 +104,6 @@ function App() {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             />
-        ) : (
-        )
         </aside>
       ) : null}
     </div>
