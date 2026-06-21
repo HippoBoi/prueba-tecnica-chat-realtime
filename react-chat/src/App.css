@@ -184,7 +184,6 @@ button {
 }
 
 button:hover:not(:disabled) {
-  transform: translateY(-1px);
   filter: brightness(1.04);
 }
 
@@ -287,8 +286,8 @@ button:disabled {
 
   .video-close {
     position: absolute;
-    top: 0.55rem;
-    right: 0.55rem;
+    top: 0.05rem;
+    right: 0.01rem;
     z-index: 1;
     display: inline-flex;
     align-items: center;
@@ -302,7 +301,7 @@ button:disabled {
     color: #ffffff;
     font-size: 1.35rem;
     line-height: 1;
-    background: rgba(15, 23, 42, 0.82);
+    background: rgba(55, 10, 32, 0.85);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.24);
   }
 
