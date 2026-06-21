@@ -81,8 +81,8 @@ function App() {
               type="button"
               className="video-close"
               onClick={() => setSelectedYouTubeVideoId(null)}
-              aria-label="Close video player"
-              title="Close video player"
+              aria-label="Close video"
+              title="Close video"
             >
               X
             </button>
