@@ -121,6 +121,21 @@
 .message-user-id-4 { background: #5b3fa3; }
 .message-user-id-5 { background: #8a2533; }
 
+.message-metadata {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.message-timestamp {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 .message-text {
   margin: 0;
   line-height: 1.4;
