@@ -86,6 +86,7 @@
 .message-header {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   min-width: 0;
   gap: 0.45rem;
 }
@@ -101,7 +102,7 @@
 }
 
 .message-user-id {
-  flex: 0 0 auto;
+  max-width: 100%;
   border-radius: 999px;
   padding: 0.12rem 0.4rem;
   color: #fff;
@@ -110,6 +111,7 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
 }
 
 .message-user-id-0 { background: #3155a4; }

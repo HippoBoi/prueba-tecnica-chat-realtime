@@ -29,14 +29,13 @@ function UserIdBadge({ userId }: { userId?: string | null }) {
     (hash, character) => (hash * 31 + character.charCodeAt(0)) >>> 0,
     0,
   ) % USER_ID_BADGE_COLOR_COUNT;
-  const label = `#${compactUserId.slice(0, 6).toUpperCase()}`;
 
   return (
     <span
       className={`message-user-id message-user-id-${colorIndex}`}
-      title={`Anonymous user ID: ${userId}`}
+      aria-label={`Anonymous user ID: ${userId}`}
     >
-      {label}
+      {userId}
     </span>
   );
 }
